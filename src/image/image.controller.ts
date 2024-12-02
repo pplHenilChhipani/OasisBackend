@@ -105,6 +105,7 @@ export class ImageController {
       const imageUrls = [];
       // Upload all files to Cloudinary (or any storage provider)
       for (const file of files) {
+        filepath = filepath.replace(/^"|"$/g, '');
         const imageURL = await this.imageService.uploadImage(file, filepath);
         imageUrls.push(imageURL);  // Add the Cloudinary URL of the uploaded image
       }
